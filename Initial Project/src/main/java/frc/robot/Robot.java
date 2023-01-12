@@ -24,10 +24,10 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  private final PWMSparkMax m_leftMotor = new PWMSparkMax (0);
-    private final PWMSparkMax m_rightMotor = new PWMSparkMax (1);
-    private final DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftMotor, m_rightMotor);
-    private final XboxController m_driverController = new XboxController(0);
+  private final PWMSparkMaxL m_leftMotor = new PWMSparkMax (0);
+  private final PWMSparkMaxR m_rightMotor = new PWMSparkMax (1);
+  private final DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftMotor, m_rightMotor);
+  private final XboxController m_driverController = new XboxController(0);
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -35,10 +35,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    m_chooser.addOption("My Auto", kCustomAuto);
-    SmartDashboard.putData("Auto choices", m_chooser);
-    m_rightMotor.setInverted(true);
+   // m_rightMotor.setInverted(true);
   }
 
   /**
@@ -89,7 +86,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    m_robotDrive.arcadeDrive(-m_driverController.getLeftY(), -m_driverController.getRightX());
+    m_robotDrive.arcadeDrive(m_driverController.getLeftY(), m_driverController.getRightX());
   }
 
   /** This function is called once when the robot is disabled. */
