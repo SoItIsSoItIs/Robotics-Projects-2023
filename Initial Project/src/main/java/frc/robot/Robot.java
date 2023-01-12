@@ -4,12 +4,13 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -24,8 +25,8 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  private final PWMSparkMaxL m_leftMotor = new PWMSparkMax (0);
-  private final PWMSparkMaxR m_rightMotor = new PWMSparkMax (1);
+  private final WPI_VictorSPX m_leftMotor = new WPI_VictorSPX (0);
+  private final WPI_VictorSPX m_rightMotor = new WPI_VictorSPX (1);
   private final DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftMotor, m_rightMotor);
   private final XboxController m_driverController = new XboxController(0);
 
