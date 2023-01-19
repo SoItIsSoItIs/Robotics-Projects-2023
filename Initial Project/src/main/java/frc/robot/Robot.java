@@ -30,6 +30,8 @@ public class Robot extends TimedRobot {
   private final DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftMotor, m_rightMotor);
   private final XboxController m_driverController = new XboxController(0);
 
+  private int time;
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -37,6 +39,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
    // m_rightMotor.setInverted(true);
+   time = 0;
   }
 
   /**
@@ -69,14 +72,14 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-      case kCustomAuto:
-        // Put custom auto code here
-        break;
-      case kDefaultAuto:
-      default:
-        // Put default auto code here
-        break;
+    time += 1;
+    if (time == 100) { // if 2 seconds, stop moving robot
+      m_leftMotor.set(0);
+      m_rightMotor.set(0);
+    }
+    if (time < 100) {
+      m_leftMotor.set(0.1);
+      m_rightMotor.set(0.1);
     }
   }
 

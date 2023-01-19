@@ -1,0 +1,12 @@
+// Imports
+
+// Variables
+
+// functions
+
+// Main
+1. Power on
+2. Autonomy mode activate
+3. Power both motors x units of power -- You will have to test voltage randomly and adjust 0.2; Use set()
+4. Stop after y time 
+5. Power both motors x units of power backwards
